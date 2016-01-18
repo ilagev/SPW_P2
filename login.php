@@ -22,6 +22,7 @@
 			$salt = $usuario['salt'];
 			$hash = hash("sha256", $password . $salt, false);
 			if ($hash == $usuario['password']) {
+                                session_regenerate_id();
 				$_SESSION['autenticado'] = 'correcto';
 				header ("Location:MasterWeb.php");
 			} else {
